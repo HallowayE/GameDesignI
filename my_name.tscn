@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://lux34lw3ppkx"]
+
+[ext_resource type="Script" path="res://MyName.gd" id="1_k7ssd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8q33"]
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_1uayy"]
+default_font_size = 32
+
+[node name="MyName" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k7ssd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 126.0
+offset_right = 1043.0
+offset_bottom = 364.0
+text = "-"
+label_settings = SubResource("LabelSettings_o8q33")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnShow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 505.0
+offset_right = 284.0
+offset_bottom = 602.0
+theme = SubResource("Theme_1uayy")
+text = "Show"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 505.0
+offset_right = 657.0
+offset_bottom = 602.0
+theme = SubResource("Theme_1uayy")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 862.0
+offset_top = 505.0
+offset_right = 1061.0
+offset_bottom = 602.0
+theme = SubResource("Theme_1uayy")
+text = "Exit
+"
+
+[connection signal="pressed" from="btnShow" to="." method="_on_btn_show_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

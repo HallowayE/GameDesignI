@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqgbp0ks3tw41"]
+
+[ext_resource type="Script" path="res://AboutMe.gd" id="1_34bjc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xwwq2"]
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_ap23s"]
+default_font_size = 32
+
+[node name="AboutMe" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_34bjc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 126.0
+offset_right = 1043.0
+offset_bottom = 364.0
+text = "-"
+label_settings = SubResource("LabelSettings_xwwq2")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="btnShow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 491.0
+offset_right = 281.0
+offset_bottom = 595.0
+theme = SubResource("Theme_ap23s")
+text = "Show"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 491.0
+offset_right = 650.0
+offset_bottom = 595.0
+theme = SubResource("Theme_ap23s")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 855.0
+offset_top = 491.0
+offset_right = 1070.0
+offset_bottom = 595.0
+theme = SubResource("Theme_ap23s")
+text = "Exit
+"
+
+[connection signal="pressed" from="btnShow" to="." method="_on_btn_show_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
