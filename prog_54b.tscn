@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqgiy8olckerj"]
+
+[sub_resource type="Theme" id="Theme_cbc7d"]
+default_font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_5xyiu"]
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_4fdn6"]
+default_font_size = 32
+
+[node name="prog54b" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lne1" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 53.0
+offset_right = 456.0
+offset_bottom = 127.0
+theme = SubResource("Theme_cbc7d")
+placeholder_text = "Num 1"
+
+[node name="lne2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 147.0
+offset_right = 456.0
+offset_bottom = 221.0
+theme = SubResource("Theme_cbc7d")
+placeholder_text = "Num 2"
+
+[node name="lne3" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 238.0
+offset_right = 456.0
+offset_bottom = 312.0
+theme = SubResource("Theme_cbc7d")
+placeholder_text = "Num 3"
+
+[node name="lne4" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 331.0
+offset_right = 456.0
+offset_bottom = 405.0
+theme = SubResource("Theme_cbc7d")
+placeholder_text = "Num 4"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 61.0
+offset_right = 1054.0
+offset_bottom = 164.0
+text = "Sum:"
+label_settings = SubResource("LabelSettings_5xyiu")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 246.0
+offset_right = 1054.0
+offset_bottom = 349.0
+text = "Average:"
+label_settings = SubResource("LabelSettings_5xyiu")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 475.0
+offset_right = 298.0
+offset_bottom = 590.0
+theme = SubResource("Theme_4fdn6")
+text = "Calculate"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 475.0
+offset_right = 700.0
+offset_bottom = 590.0
+theme = SubResource("Theme_4fdn6")
+text = "Clear"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 847.0
+offset_top = 475.0
+offset_right = 1099.0
+offset_bottom = 590.0
+theme = SubResource("Theme_4fdn6")
+text = "Exit"
