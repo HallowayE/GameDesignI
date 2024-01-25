@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1xnfjislj38j"]
+
+[ext_resource type="Script" path="res://Prog52a.gd" id="1_vepyf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hf1q7"]
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_k32b8"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_fy0c1"]
+default_font_size = 32
+
+[node name="Prog52a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vepyf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 71.0
+offset_right = 631.0
+offset_bottom = 137.0
+text = "Length: "
+label_settings = SubResource("LabelSettings_hf1q7")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 163.0
+offset_right = 636.0
+offset_bottom = 229.0
+text = "Width: "
+label_settings = SubResource("LabelSettings_hf1q7")
+
+[node name="lblArea" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 315.0
+offset_right = 924.0
+offset_bottom = 393.0
+text = "Area: "
+label_settings = SubResource("LabelSettings_hf1q7")
+
+[node name="lblPerim" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 393.0
+offset_right = 924.0
+offset_bottom = 504.0
+text = "Perimeter: "
+label_settings = SubResource("LabelSettings_hf1q7")
+
+[node name="lneLength" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 65.0
+offset_right = 574.0
+offset_bottom = 132.0
+theme = SubResource("Theme_k32b8")
+placeholder_text = "Enter Here"
+
+[node name="lneWidth" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 153.0
+offset_right = 574.0
+offset_bottom = 220.0
+theme = SubResource("Theme_k32b8")
+placeholder_text = "Enter Here"
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 504.0
+offset_right = 305.0
+offset_bottom = 602.0
+theme = SubResource("Theme_fy0c1")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 504.0
+offset_right = 700.0
+offset_bottom = 602.0
+theme = SubResource("Theme_fy0c1")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 821.0
+offset_top = 504.0
+offset_right = 1081.0
+offset_bottom = 602.0
+theme = SubResource("Theme_fy0c1")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
