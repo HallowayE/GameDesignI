@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://kmcd0dfxj4cw"]
+
+[ext_resource type="Script" path="res://prog54c.gd" id="1_jkuh1"]
+
+[sub_resource type="Theme" id="Theme_lkk21"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_w5rpg"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_xhveb"]
+default_font_size = 32
+
+[node name="prog54c" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jkuh1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 47.0
+offset_right = 838.0
+offset_bottom = 118.0
+theme = SubResource("Theme_lkk21")
+text = "Radius: "
+
+[node name="lblArea" type="Label" parent="."]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 171.0
+offset_right = 838.0
+offset_bottom = 242.0
+theme = SubResource("Theme_lkk21")
+text = "Area: "
+
+[node name="lblCirc" type="Label" parent="."]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 331.0
+offset_right = 838.0
+offset_bottom = 402.0
+theme = SubResource("Theme_lkk21")
+text = "Circumferance: "
+
+[node name="lneRad" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 44.0
+offset_right = 697.0
+offset_bottom = 97.0
+theme = SubResource("Theme_w5rpg")
+placeholder_text = "Enter Radius"
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 516.0
+offset_right = 295.0
+offset_bottom = 597.0
+theme = SubResource("Theme_xhveb")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 516.0
+offset_right = 663.0
+offset_bottom = 597.0
+theme = SubResource("Theme_xhveb")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 516.0
+offset_right = 1059.0
+offset_bottom = 597.0
+theme = SubResource("Theme_xhveb")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
