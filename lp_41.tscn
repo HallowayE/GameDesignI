@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://we7jf2pktpql"]
+
+[ext_resource type="Script" path="res://lp41.gd" id="1_4qpsx"]
+
+[sub_resource type="Theme" id="Theme_ty3gc"]
+default_font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_okvmc"]
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_dga5l"]
+default_font_size = 32
+
+[node name="lp41" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4qpsx")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 64.0
+offset_right = 728.0
+offset_bottom = 120.0
+theme = SubResource("Theme_ty3gc")
+placeholder_text = "Copies"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 141.0
+offset_right = 1059.0
+offset_bottom = 493.0
+label_settings = SubResource("LabelSettings_okvmc")
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 547.0
+offset_right = 271.0
+offset_bottom = 609.0
+theme = SubResource("Theme_dga5l")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 547.0
+offset_right = 657.0
+offset_bottom = 609.0
+theme = SubResource("Theme_dga5l")
+text = "Clear
+"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 858.0
+offset_top = 547.0
+offset_right = 1070.0
+offset_bottom = 609.0
+theme = SubResource("Theme_dga5l")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

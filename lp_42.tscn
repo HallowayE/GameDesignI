@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://ojbky8wd8bnm"]
+
+[ext_resource type="Script" path="res://lp42.gd" id="1_vot7q"]
+
+[sub_resource type="Theme" id="Theme_i0656"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_cnlcb"]
+default_font_size = 32
+
+[node name="lp42" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vot7q")
+
+[node name="lneWeight" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 31.0
+offset_right = 680.0
+offset_bottom = 89.0
+theme = SubResource("Theme_i0656")
+placeholder_text = "Weight (kg)"
+
+[node name="lneLength" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 107.0
+offset_right = 680.0
+offset_bottom = 165.0
+theme = SubResource("Theme_i0656")
+placeholder_text = "Length (cm)"
+
+[node name="lneWidth" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 183.0
+offset_right = 680.0
+offset_bottom = 241.0
+theme = SubResource("Theme_i0656")
+placeholder_text = "Width (cm)"
+
+[node name="lneHeight" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 256.0
+offset_right = 680.0
+offset_bottom = 314.0
+theme = SubResource("Theme_i0656")
+placeholder_text = "Height (cm)"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 379.0
+offset_right = 791.0
+offset_bottom = 450.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 512.0
+offset_right = 299.0
+offset_bottom = 604.0
+theme = SubResource("Theme_cnlcb")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 512.0
+offset_right = 689.0
+offset_bottom = 604.0
+theme = SubResource("Theme_cnlcb")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 512.0
+offset_right = 1074.0
+offset_bottom = 604.0
+theme = SubResource("Theme_cnlcb")
+text = "Exit
+"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
