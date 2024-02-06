@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://ehifyre5c1lt"]
+
+[ext_resource type="Script" path="res://prog122h.gd" id="1_ifq63"]
+
+[sub_resource type="Theme" id="Theme_hm35g"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_5dtkp"]
+default_font_size = 32
+
+[node name="prog122h" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ifq63")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 23.0
+offset_right = 1120.0
+offset_bottom = 502.0
+theme = SubResource("Theme_hm35g")
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 534.0
+offset_right = 208.0
+offset_bottom = 614.0
+theme = SubResource("Theme_5dtkp")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 534.0
+offset_right = 626.0
+offset_bottom = 614.0
+theme = SubResource("Theme_5dtkp")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 924.0
+offset_top = 534.0
+offset_right = 1100.0
+offset_bottom = 614.0
+theme = SubResource("Theme_5dtkp")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
