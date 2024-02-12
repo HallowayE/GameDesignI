@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl7t24lxcc6mt"]
+
+[ext_resource type="Script" path="res://CalculatorWithFunctions.gd" id="1_253fi"]
+
+[sub_resource type="Theme" id="Theme_3yo3y"]
+default_font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_acuuk"]
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_lcuo5"]
+default_font_size = 64
+
+[sub_resource type="Theme" id="Theme_nali4"]
+default_font_size = 32
+
+[node name="CalculatorWithFunctions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_253fi")
+
+[node name="lne1" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 53.0
+offset_right = 467.0
+offset_bottom = 132.0
+theme = SubResource("Theme_3yo3y")
+placeholder_text = "Number 1"
+
+[node name="lne2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 174.0
+offset_right = 467.0
+offset_bottom = 253.0
+theme = SubResource("Theme_3yo3y")
+placeholder_text = "Number 2"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 304.0
+offset_right = 496.0
+offset_bottom = 406.0
+text = "Results: "
+label_settings = SubResource("LabelSettings_acuuk")
+vertical_alignment = 1
+
+[node name="btnPlus" type="Button" parent="."]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 30.0
+offset_right = 646.0
+offset_bottom = 126.0
+theme = SubResource("Theme_lcuo5")
+text = "+"
+
+[node name="btnMinus" type="Button" parent="."]
+layout_mode = 0
+offset_left = 747.0
+offset_top = 30.0
+offset_right = 842.0
+offset_bottom = 126.0
+theme = SubResource("Theme_lcuo5")
+text = "-"
+
+[node name="btnTimes" type="Button" parent="."]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 30.0
+offset_right = 1035.0
+offset_bottom = 126.0
+theme = SubResource("Theme_lcuo5")
+text = "*"
+
+[node name="btnPow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 176.0
+offset_right = 646.0
+offset_bottom = 272.0
+theme = SubResource("Theme_lcuo5")
+text = "^"
+
+[node name="btnDiv" type="Button" parent="."]
+layout_mode = 0
+offset_left = 747.0
+offset_top = 176.0
+offset_right = 842.0
+offset_bottom = 272.0
+theme = SubResource("Theme_lcuo5")
+text = "/"
+
+[node name="btnMod" type="Button" parent="."]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 176.0
+offset_right = 1035.0
+offset_bottom = 272.0
+theme = SubResource("Theme_lcuo5")
+text = "%"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 546.0
+offset_right = 230.0
+offset_bottom = 618.0
+theme = SubResource("Theme_nali4")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 918.0
+offset_top = 546.0
+offset_right = 1108.0
+offset_bottom = 618.0
+theme = SubResource("Theme_nali4")
+text = "Exit"
+
+[connection signal="pressed" from="btnPlus" to="." method="_on_btn_plus_pressed"]
+[connection signal="pressed" from="btnMinus" to="." method="_on_btn_minus_pressed"]
+[connection signal="pressed" from="btnTimes" to="." method="_on_btn_times_pressed"]
+[connection signal="pressed" from="btnPow" to="." method="_on_btn_pow_pressed"]
+[connection signal="pressed" from="btnDiv" to="." method="_on_btn_div_pressed"]
+[connection signal="pressed" from="btnMod" to="." method="_on_btn_mod_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
