@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpikk51ninvs1"]
+
+[ext_resource type="Script" path="res://prog52aFunc.gd" id="1_2eyyg"]
+
+[sub_resource type="Theme" id="Theme_cmsa6"]
+default_font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_nya47"]
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_81klt"]
+default_font_size = 32
+
+[node name="prog52aFunc" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2eyyg")
+
+[node name="lneLength" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 44.0
+offset_right = 803.0
+offset_bottom = 128.0
+theme = SubResource("Theme_cmsa6")
+placeholder_text = "Length"
+
+[node name="lneWidth" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 165.0
+offset_right = 803.0
+offset_bottom = 249.0
+theme = SubResource("Theme_cmsa6")
+placeholder_text = "Width"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 285.0
+offset_right = 1108.0
+offset_bottom = 377.0
+text = "Area:
+
+Perimeter: "
+label_settings = SubResource("LabelSettings_nya47")
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 525.0
+offset_right = 228.0
+offset_bottom = 618.0
+theme = SubResource("Theme_81klt")
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 525.0
+offset_right = 663.0
+offset_bottom = 618.0
+theme = SubResource("Theme_81klt")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 525.0
+offset_right = 1115.0
+offset_bottom = 618.0
+theme = SubResource("Theme_81klt")
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
