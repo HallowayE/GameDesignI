@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw8pi0erw7y0e"]
+
+[ext_resource type="Script" path="res://Scoreboard.gd" id="1_h4sat"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ybvc"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_tkkgv"]
+font_size = 64
+
+[sub_resource type="Theme" id="Theme_qpu4v"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_s33hu"]
+default_font_size = 32
+
+[node name="Scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h4sat")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 32.0
+offset_right = 500.0
+offset_bottom = 98.0
+text = "Modify Points(add/sub): "
+label_settings = SubResource("LabelSettings_5ybvc")
+
+[node name="lblScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 153.0
+offset_right = 1115.0
+offset_bottom = 444.0
+text = "0"
+label_settings = SubResource("LabelSettings_tkkgv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 26.0
+offset_right = 905.0
+offset_bottom = 91.0
+theme = SubResource("Theme_qpu4v")
+placeholder_text = "add"
+
+[node name="btnUpdate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 539.0
+offset_right = 462.0
+offset_bottom = 626.0
+theme = SubResource("Theme_s33hu")
+text = "Update"
+
+[node name="btnReset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 539.0
+offset_right = 895.0
+offset_bottom = 626.0
+theme = SubResource("Theme_s33hu")
+text = "Reset"
+
+[connection signal="pressed" from="btnUpdate" to="." method="_on_btn_update_pressed"]
+[connection signal="pressed" from="btnReset" to="." method="_on_btn_reset_pressed"]
