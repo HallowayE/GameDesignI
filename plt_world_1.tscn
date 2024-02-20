@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bc42paav01cie"]
+[gd_scene load_steps=12 format=3 uid="uid://bc42paav01cie"]
 
 [ext_resource type="Script" path="res://plt_world1.gd" id="1_wx00e"]
 [ext_resource type="Script" path="res://plt_player.gd" id="2_3tf71"]
 [ext_resource type="Texture2D" uid="uid://b8q8sgiit60dd" path="res://icon.svg" id="2_t8400"]
+[ext_resource type="Script" path="res://plt_enemy.gd" id="4_ylcuw"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bunl0"]
 a = Vector2(84, 16)
@@ -19,13 +20,19 @@ height = 26.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umki4"]
 size = Vector2(28, 94)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e222k"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnwuw"]
+size = Vector2(26, 26)
+
 [node name="plt_world1" type="Node2D"]
 script = ExtResource("1_wx00e")
 
 [node name="world" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world"]
-polygon = PackedVector2Array(0, -15, 29, 252, 56, 418, 261, 446, 319, 491, 172, 522, 43, 600, 117, 644, 617, 674, 1185, 678, 1325, 585, 1328, 503, 1147, 505, 932, 573, 563, 584, 166, 584, 248, 552, 457, 524, 416, 495, 462, 463, 540, 441, 627, 436, 672, 478, 695, 533, 793, 508, 887, 458, 901, 379, 994, 348, 1136, 341, 1207, 364, 1275, 339, 1343, 301, 1510, 155, 1710, 65, 1857, 4, 1987, -1, 1954, -39, 2026, -97, 1988, -106, 2024, -112, 2032, -138, 2038, -113, 2075.58, -107.607, 2039, -96, 2108, -56, 2084, -21, 2261, -81, 2341, -39, 2168, 105, 2066, 411, 1996, 191, 1868, 145, 1796, 145, 1758, 237, 1702, 149, 1460, 323, 1353, 491, 1357, 577, 1512, 609, 1570, 591, 1554, 573, 1569, 550, 1595, 550, 1608, 571, 1592.27, 590.398, 1743, 588, 1770, 499, 1794, 577, 2129, 525, 2412, 567, 2760, 505, 3021, 446, 3224, 369, 3402, 271, 3689, 369, 4152, 483, 5581, 496, 5650, 174, 5967, 638, 5251, 661, 2646, 634, 1808, 664, 1212, 720, -40, 686)
+polygon = PackedVector2Array(0, -15, 29, 252, 56, 418, 261, 446, 319, 491, 172, 522, 43, 600, 117, 644, 617, 674, 1185, 678, 1349, 582, 1352, 491, 1147, 505, 932, 573, 563, 584, 166, 584, 248, 552, 457, 524, 416, 495, 462, 463, 540, 441, 627, 436, 672, 478, 695, 533, 793, 508, 887, 458, 901, 379, 994, 348, 1136, 341, 1207, 364, 1275, 339, 1343, 301, 1510, 155, 1710, 65, 1857, 4, 1987, -1, 1954, -39, 2026, -97, 1988, -106, 2024, -112, 2032, -138, 2038, -113, 2075.58, -107.607, 2039, -96, 2108, -56, 2084, -21, 2261, -81, 2341, -39, 2168, 105, 2066, 411, 1996, 191, 1868, 145, 1796, 145, 1758, 237, 1702, 149, 1460, 323, 1353, 491, 1357, 577, 1512, 609, 1570, 591, 1554, 573, 1569, 550, 1595, 550, 1608, 571, 1592.27, 590.398, 1743, 588, 1770, 499, 1794, 577, 2129, 525, 2412, 567, 2760, 505, 3021, 446, 3224, 369, 3402, 271, 3689, 369, 4152, 483, 5581, 496, 5650, 174, 5967, 638, 5251, 661, 2646, 634, 1808, 664, 1212, 720, -40, 686)
 
 [node name="Polygon2D" type="Polygon2D" parent="world/CollisionPolygon2D"]
 color = Color(0.180392, 0.560784, 0.745098, 1)
@@ -68,4 +75,47 @@ texture = SubResource("PlaceholderTexture2D_81pxf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interact"]
 shape = SubResource("RectangleShape2D_umki4")
 
+[node name="draggable" type="RigidBody2D" parent="."]
+position = Vector2(95, 381)
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="draggable"]
+shape = SubResource("RectangleShape2D_e222k")
+
+[node name="ColorRect" type="ColorRect" parent="draggable"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.815686, 0.85098, 0.85098, 1)
+
+[node name="Button" type="Button" parent="draggable/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 41.0
+offset_bottom = 41.0
+focus_mode = 0
+
+[node name="plt_enemy" type="RigidBody2D" parent="."]
+position = Vector2(5028, 466)
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("4_ylcuw")
+
+[node name="Sprite2D" type="Sprite2D" parent="plt_enemy"]
+modulate = Color(1, 0.419608, 0.439216, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_t8400")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plt_enemy"]
+shape = SubResource("RectangleShape2D_bnwuw")
+
+[node name="Timer" type="Timer" parent="plt_enemy"]
+
 [connection signal="mouse_entered" from="interact" to="." method="_on_interact_mouse_entered"]
+[connection signal="button_down" from="draggable/ColorRect/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="draggable/ColorRect/Button" to="." method="_on_button_button_up"]
+[connection signal="body_entered" from="plt_enemy" to="plt_enemy" method="_on_body_entered"]
+[connection signal="timeout" from="plt_enemy/Timer" to="plt_enemy" method="_on_timer_timeout"]
