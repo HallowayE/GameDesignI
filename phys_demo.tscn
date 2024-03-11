@@ -63,6 +63,7 @@ offset_bottom = 200.0
 text = "Apply Adjustments"
 
 [node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 85.0
 offset_right = 69.0
@@ -70,6 +71,7 @@ offset_bottom = 111.0
 text = "Inertia: "
 
 [node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 124.0
 offset_right = 109.0
@@ -77,18 +79,21 @@ offset_bottom = 150.0
 text = "Velocity (x, y)"
 
 [node name="txtInrtia" type="TextEdit" parent="Panel"]
+layout_mode = 0
 offset_left = 76.0
 offset_top = 89.0
 offset_right = 259.0
 offset_bottom = 114.0
 
 [node name="txtVX" type="TextEdit" parent="Panel"]
+layout_mode = 0
 offset_left = 113.0
 offset_top = 125.0
 offset_right = 171.0
 offset_bottom = 150.0
 
 [node name="txtVY" type="TextEdit" parent="Panel"]
+layout_mode = 0
 offset_left = 193.0
 offset_top = 127.0
 offset_right = 259.0

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpxigaua6pk58"]
+
+[ext_resource type="Script" path="res://my_gui.gd" id="1_fe3hw"]
+
+[sub_resource type="Theme" id="Theme_svifd"]
+default_font_size = 32
+
+[node name="my_gui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fe3hw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.5
+offset_top = -55.0
+offset_right = 239.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btnResume" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_svifd")
+text = "Resume"
+
+[node name="btnQuit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_svifd")
+text = "Quit"
+
+[connection signal="pressed" from="Panel/VBoxContainer/btnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/btnQuit" to="." method="_on_btn_quit_pressed"]
