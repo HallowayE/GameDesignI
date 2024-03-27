@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b47x3iu4g7mlt"]
+[gd_scene load_steps=8 format=3 uid="uid://b47x3iu4g7mlt"]
 
 [ext_resource type="Texture2D" uid="uid://l5gkj4evcpk8" path="res://assets/sprites/zelda_like/Overworld.png" id="1_3d8y0"]
+[ext_resource type="PackedScene" uid="uid://x3xq5pl1lyem" path="res://entities/mini_heart.tscn" id="2_1xbdy"]
 [ext_resource type="PackedScene" uid="uid://dbxbygetb74qx" path="res://td_player.tscn" id="2_dn3ly"]
+[ext_resource type="PackedScene" uid="uid://bcklryjttvvmo" path="res://entities/coin.tscn" id="3_b1jnr"]
 [ext_resource type="PackedScene" uid="uid://2nk1ogtoqw77" path="res://player_hud.tscn" id="3_jrchf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0b3hj"]
@@ -3172,6 +3174,12 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(131074, 2, 8, 65541, 2, 8, 327684, 131074, 12, 262144, 131074, 12, 0, 65538, 8, 262149, 1441794, 9)
+
+[node name="mini_heart" parent="TileMap" instance=ExtResource("2_1xbdy")]
+position = Vector2(78.8444, 24.6357)
+
+[node name="coin" parent="TileMap/mini_heart" instance=ExtResource("3_b1jnr")]
+position = Vector2(-72.1642, 44.8578)
 
 [node name="td_player" parent="." instance=ExtResource("2_dn3ly")]
 position = Vector2(51, 39)
