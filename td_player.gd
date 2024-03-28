@@ -45,6 +45,24 @@ func attack():
 	slash.rotation = Vector2().angle_to_point(-attack_direction)
 	add_child(slash)
 	anim_lock = 0.2
+	
+func charged_attack():
+	data.state = STATES.ATTACKING
+	$AnimatedSprite2D.play("swipe_charge")
+	attack_direction=look_direction
+	dam_lock=0.3
+	for i in range(9):
+		var angle = -attack_direction.angle()+(i-4)*PI/4
+		var dir = Vector2(cos(angle), sin(angle))
+		var slash = slash_scene.instantiate()
+		slash.position = dir*20
+		slash.rotation = Vector2().angle_to_point(-dir)
+		slash.damage *= 1.5
+		add_child(slash)
+		await get_tree().create_timer(0.03).timeout
+	anim_lock=0.3
+	await $AnimatedSprite2D.animation_finished
+	data.state = STATES.IDLE
 
 func pickup_money(value):
 	data.money+=value
@@ -85,22 +103,33 @@ func _physics_process(delta):
 	if data.state != STATES.DEAD:
 		if Input.is_action_just_pressed("ui_accept"):
 			attack()
+			charge_start_time = Time.get_time_dict_from_system().second
+			data.state=STATES.CHARGING
+		if Input.is_action_just_released("ui_accept"):
+			var ctime = Time.get_time_dict_from_system().second
+			var charge_duration=ctime-charge_start_time
+			if charge_duration>=charge_time and data.state == STATES.CHARGING:
+				charged_attack()
+			else:
+				data.state = STATES.IDLE
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		menu_instance.show()
 		get_tree().paused=true
 		
 func update_anim(direction):
-	var a_name = "idle_"
-	if direction.length()>0:
-		look_direction=direction
-		a_name="walk_"
-	if look_direction.x != 0:
-		a_name+="side"
-		$AnimatedSprite2D.flip_h = look_direction.x<0
-	elif look_direction.y<0:
-		a_name+="up"
-	elif look_direction.y>0:
-		a_name+="down"
-	$AnimatedSprite2D.animation=a_name
-	$AnimatedSprite2D.play()
+	if data.state==STATES.IDLE:
+		var a_name = "idle_"
+		if direction.length()>0:
+			look_direction=direction
+			a_name="walk_"
+		if look_direction.x != 0:
+			a_name+="side"
+			$AnimatedSprite2D.flip_h = look_direction.x<0
+		elif look_direction.y<0:
+			a_name+="up"
+		elif look_direction.y>0:
+			a_name+="down"
+		$AnimatedSprite2D.animation=a_name
+		$AnimatedSprite2D.play()
+	pass
