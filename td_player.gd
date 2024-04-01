@@ -70,6 +70,21 @@ func pickup_money(value):
 func pickup_health(value):
 	data.health+=value
 	data.health=clamp(data.health, 0, data.max_health)
+	
+signal health_depleted
+
+func take_damage(dmg):
+	if dam_lock==0:
+		data.health-=dmg
+		data.state=STATES.DAMAGED
+		dam_lock=0.5
+		anim_lock=dmg*0.005
+		
+		if data.health<=0:
+			data.state = STATES.DEAD
+			await get_tree().create_timer(0.5).timeout
+			health_depleted.emit()
+	pass
 
 func _ready():
 	p_HUD.show()
