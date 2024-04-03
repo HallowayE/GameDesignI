@@ -12,7 +12,7 @@ func _process(delta):
 	
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		if self.overlaps_body(enemy):
-			enemy.take_danage(damage, self)
+			enemy.take_damage(damage, self)
 			enemy.inertia = (enemy.global_position-self.global_position)\
-							.normalize() * knockback
+							.normalized() * knockback
 			
