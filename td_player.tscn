@@ -364,7 +364,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nkjra"]
 radius = 5.0
-height = 14.0
+height = 16.0
 
 [node name="td_player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ttmfl")
@@ -376,7 +376,7 @@ frame = 10
 frame_progress = 0.188395
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 7)
+position = Vector2(0, 7)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nkjra")
 

@@ -51,6 +51,32 @@ signal recovered
 
 @onready var anim_player = $AnimatedSprite2D
 
+var drops = ["drop_coin", "drop_heart"]
+
+var coin_scene = preload("res://entities/coin.tscn")
+var heart_scene = preload("res://entities/mini_heart.tscn")
+
+func vec2_offset():
+	return Vector2(randf_range(-10, 10), randf_range(-10, 10))
+
+func drop_scene(item_scene):
+	item_scene.global_position = self.global_position + vec2_offset()
+	get_tree().current_scene.add_child(item_scene)
+
+func drop_heart():
+	drop_scene(heart_scene.instantiate())
+	
+func drop_coin():
+	var coin = coin_scene.instantiate()
+	coin.value = money_value
+	drop_scene(coin)
+	
+func drop_items():
+	var num_drops = randi() % 3 + 1
+	for i in range(num_drops):
+		var rnd_drop = drops[randi() % drops.size()]
+		call_deferred(rnd_drop)
+
 func turn_toward_player_location(location: Vector2):
 	var dir_to_player = (location - self.global_position).normalized()
 	velocity = dir_to_player*(SPEED*2)
@@ -73,7 +99,7 @@ func take_damage(dmg, attacker=null):
 		anim_lock=0.2
 		#TODO: Damage Shader
 		if HEALTH <= 0:
-			#TODO: Drop Item
+			drop_items()
 			#TODO: play Death Sound
 			queue_free()
 		else:
@@ -95,7 +121,20 @@ func _physics_process(delta):
 			#TODO: reset shader
 			AI_STATE=STATES.IDLE
 			recovered.emit()
-		#TODO: damge player
+		for player in get_tree().get_nodes_in_group("Player"):
+			if $AttackBox.overlaps_body(player):
+				if player.dam_lock==0:
+					var inert = (player.global_position-self.global_position)
+					player.inertia = inert.normalized() * knockback
+					player.take_damage(DAMAGE)
+				else:
+					continue
+			if player.data.state != player.STATES.DEAD:
+				if(raycastM.is_colliding() and raycastM.get_collider()==player) or \
+				(raycastL.is_colliding() and raycastL.get_collider()==player) or \
+				(raycastR.is_colliding() and raycastR.get_collider()==player):
+					turn_toward_player_location(player.global_position)
+					
 		
 		ai_timer = clamp(ai_timer-delta, 0, ai_timer_max)
 		if ai_timer == 0:
