@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b47x3iu4g7mlt"]
+[gd_scene load_steps=8 format=3 uid="uid://b47x3iu4g7mlt"]
 
 [ext_resource type="Texture2D" uid="uid://l5gkj4evcpk8" path="res://assets/sprites/zelda_like/Overworld.png" id="1_3d8y0"]
 [ext_resource type="PackedScene" uid="uid://dbxbygetb74qx" path="res://td_player.tscn" id="2_dn3ly"]
 [ext_resource type="PackedScene" uid="uid://2nk1ogtoqw77" path="res://player_hud.tscn" id="3_jrchf"]
 [ext_resource type="PackedScene" uid="uid://bl2e6rkbq480g" path="res://td_enemy.tscn" id="4_pucf5"]
+[ext_resource type="AudioStream" uid="uid://c071ftf4xww03" path="res://assets/sounds/overworld.mp3" id="5_oemc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0b3hj"]
 texture = ExtResource("1_3d8y0")
@@ -3205,10 +3206,15 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(131074, 2, 8, 65541, 2, 8, 327684, 131074, 12, 262144, 131074, 12, 262149, 1441794, 9, 524282, 196610, 11, -65541, 131074, 12, 720899, 196610, 11, -327677, 196610, 12, 655349, 131074, 12, 589834, 196610, 11, -262154, 196610, 12, 851964, 196610, 11, -393205, 1572866, 6, -327694, 1441794, 6, -327693, 1507330, 6, -327692, 1507330, 6, -327691, 1507330, 6, -327690, 1507330, 6, -327689, 1507330, 6, -327688, 1507330, 6, -327687, 1507330, 6, -327686, 1507330, 6, -327685, 1507330, 6, -327684, 1507330, 6, -327683, 1507330, 6, -327682, 1507330, 6, -327681, 1507330, 6, -393216, 1507330, 6, -393215, 1507330, 6, -393214, 1507330, 6, -393213, 1507330, 6, -393212, 1507330, 6, -393211, 1507330, 6, -393210, 1507330, 6, -393209, 1507330, 6, -393208, 1507330, 6, -393207, 1507330, 6, -393206, 1507330, 6, -393230, 1376258, 4, -393223, 1376258, 5, -393219, 1376258, 5, -458752, 1376258, 5, -458747, 1376258, 5, -458744, 1376258, 5, 917499, 393218, 11, 983035, 393218, 12, 1048571, 393218, 13, 1114107, 393218, 13, 1179643, 393218, 13, 1245179, 393218, 13, 851969, 262146, 11, 917505, 262146, 12, 983041, 262146, 13, 1048577, 262146, 13, 1114113, 262146, 13, 1179649, 262146, 13, 1245185, 262146, 14, 1310721, 262146, 15, 1310715, 393218, 14, 1376251, 393218, 15, 1376252, 458754, 15, 1245180, 458754, 13, 1310716, 458754, 14, 1179660, 458754, 13, 1245196, 458754, 14, 1310732, 458754, 15, 1179635, 2, 12, 983029, 65538, 12, 1048569, 2, 12, 1179650, 65538, 12, 1048582, 65538, 12, 983049, 2, 13, 1114121, 2, 12, 917515, 65538, 12)
 
-[node name="td_enemy" parent="TileMap" instance=ExtResource("4_pucf5")]
-position = Vector2(-125.052, 33.1432)
-
 [node name="td_player" parent="." instance=ExtResource("2_dn3ly")]
 position = Vector2(51, 39)
 
+[node name="td_enemy" parent="." instance=ExtResource("4_pucf5")]
+position = Vector2(-125.052, 33.1432)
+
 [node name="PlayerHud" parent="." instance=ExtResource("3_jrchf")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_oemc3")
+volume_db = -8.5
+autoplay = true

@@ -24,9 +24,13 @@ var charge_start_time = 0.0
 
 var slash_scene = preload("res://entities/attacks/slash.tscn")
 var menu_scene = preload("res://my_gui.tscn")
+var damage_shader = preload("res://assets/shaders/take_damage.tres")
+var attack_sound = preload("res://assets/sounds/slash.wav")
 var menu_instance = null
 
+@onready var aud_player = $AudioStreamPlayer2D
 @onready var p_HUD = get_tree().get_first_node_in_group("HUD")
+#TODO: sounds: attack, death, hurt, coin, miniheart, charge attack
 
 func get_direction_name():
 	return ["right", "down", "left", "up"][
@@ -44,6 +48,8 @@ func attack():
 	slash.position = attack_direction*20
 	slash.rotation = Vector2().angle_to_point(-attack_direction)
 	add_child(slash)
+	aud_player.stream=attack_sound
+	aud_player.play()
 	anim_lock = 0.2
 	
 func charged_attack():
@@ -79,7 +85,8 @@ func take_damage(dmg):
 		data.state=STATES.DAMAGED
 		dam_lock=0.5
 		anim_lock=dmg*0.005
-		
+		$AnimatedSprite2D.material = damage_shader.duplicate()
+		$AnimatedSprite2D.material.set_shader_parameter("intensity", 0.5)
 		if data.health<=0:
 			data.state = STATES.DEAD
 			await get_tree().create_timer(0.5).timeout
@@ -95,6 +102,9 @@ func _ready():
 func _physics_process(delta):
 	anim_lock = max(anim_lock-delta, 0)
 	dam_lock = max(dam_lock-delta, 0)
+	
+	if data.state == STATES.DAMAGED and max(dam_lock-delta, 0.0):
+			$AnimatedSprite2D.material = null
 	
 	if anim_lock == 0.0 and data.state != STATES.DEAD:
 		if data.state != STATES.CHARGING:
