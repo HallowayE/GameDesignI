@@ -365,16 +365,14 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nkjra"]
 radius = 5.0
-height = 16.0
+height = 14.0
 
 [node name="td_player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ttmfl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1kfpk")
-animation = &"swipe_charge"
-frame = 10
-frame_progress = 0.188395
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)

@@ -153,8 +153,10 @@ func update_anim(direction):
 			$AnimatedSprite2D.flip_h = look_direction.x<0
 		elif look_direction.y<0:
 			a_name+="up"
+			$AnimatedSprite2D.flip_h = false
 		elif look_direction.y>0:
 			a_name+="down"
+			$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.animation=a_name
 		$AnimatedSprite2D.play()
 	pass
