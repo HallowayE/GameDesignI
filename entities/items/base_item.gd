@@ -1,13 +1,26 @@
 class_name BaseItem extends Node2D
 
 var value
+var bounce = true
+
 var flicker_state = false
 var flicker_start_time = 10.0
 var flicker_interval = 0.1
 var current_time = 0.0
 var time_to_despawn = 13.0
 
-func _ready(): $AnimatedSprite2D.play()
+func _ready(): 
+	$AnimatedSprite2D.play()
+	if bounce:
+		var tween = get_tree().create_tween()
+		var bounce_height = Vector2(0, -3)
+		tween.set_trans(Tween.TRANS_BOUNCE)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property($AnimatedSprite2D, "global_position", self.global_position + bounce_height, 0.1)
+		tween.play()
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property($AnimatedSprite2D, "global_position", self.global_position, 0.1)
+		tween.play()
 
 func remove():
 	value = 0

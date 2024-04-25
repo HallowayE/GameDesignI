@@ -3220,7 +3220,7 @@ position = Vector2(-45.7058, -90.9167)
 next_level = "td_world_2"
 
 [node name="CollisionShape2D" parent="change_lvl" index="0"]
-position = Vector2(-146.716, 26.4167)
+position = Vector2(-146.794, 26.4167)
 
 [node name="Sprite2D" parent="change_lvl" index="1"]
 visible = false
